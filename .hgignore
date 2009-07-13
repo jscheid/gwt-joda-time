@@ -6,3 +6,6 @@ lib
 nbproj
 *.svn-base
 .svn
+.gwt-tmp
+.settings
+tomcat

@@ -137,13 +137,13 @@ public abstract class DateTimeZone implements Serializable {
    *           rights
    */
   public static void setDefault(DateTimeZone zone) { //throws SecurityException {
-  //        SecurityManager sm = System.getSecurityManager();
-  //        if (sm != null) {
-  //            sm.checkPermission(new JodaTimePermission("DateTimeZone.setDefault"));
-  //        }
-  //        if (zone == null) {
-  //            throw new IllegalArgumentException("The datetime zone must not be null");
-  //        }
+    //        SecurityManager sm = System.getSecurityManager();
+    //        if (sm != null) {
+    //            sm.checkPermission(new JodaTimePermission("DateTimeZone.setDefault"));
+    //        }
+    //        if (zone == null) {
+    //            throw new IllegalArgumentException("The datetime zone must not be null");
+    //        }
     cDefault = zone;
   }
 
@@ -354,10 +354,10 @@ public abstract class DateTimeZone implements Serializable {
    * @throws IllegalArgumentException if the provider is invalid
    */
   public static void setProvider(Provider provider) { //throws SecurityException {
-  //        SecurityManager sm = System.getSecurityManager();
-  //        if (sm != null) {
-  //            sm.checkPermission(new JodaTimePermission("DateTimeZone.setProvider"));
-  //        }
+    //        SecurityManager sm = System.getSecurityManager();
+    //        if (sm != null) {
+    //            sm.checkPermission(new JodaTimePermission("DateTimeZone.setProvider"));
+    //        }
     setProvider0(provider);
   }
 
@@ -450,10 +450,10 @@ public abstract class DateTimeZone implements Serializable {
    * @throws IllegalArgumentException if the provider is invalid
    */
   public static void setNameProvider(NameProvider nameProvider) { // throws SecurityException {
-  //        SecurityManager sm = System.getSecurityManager();
-  //        if (sm != null) {
-  //            sm.checkPermission(new JodaTimePermission("DateTimeZone.setNameProvider"));
-  //        }
+    //        SecurityManager sm = System.getSecurityManager();
+    //        if (sm != null) {
+    //            sm.checkPermission(new JodaTimePermission("DateTimeZone.setNameProvider"));
+    //        }
     setNameProvider0(nameProvider);
   }
 
@@ -785,6 +785,28 @@ public abstract class DateTimeZone implements Serializable {
    */
   public boolean isStandardOffset(long instant) {
     return getOffset(instant) == getStandardOffset(instant);
+  }
+
+  /**
+   * Checks if the given {@link LocalDateTime} is within a gap.
+   * <p>
+   * When switching from standard time to Daylight Savings Time there is
+   * typically a gap where a clock hour is missing. This method identifies
+   * whether the local datetime refers to such a gap.
+   * @param localDateTime the time to check, not null
+   * @return true if the given datetime refers to a gap
+   * @since 1.6
+   */
+  public boolean isLocalDateTimeGap(LocalDateTime localDateTime) {
+    if (isFixed()) {
+      return false;
+    }
+    try {
+      localDateTime.toDateTime(this);
+      return false;
+    } catch (IllegalArgumentException ex) {
+      return true;
+    }
   }
 
   /**
