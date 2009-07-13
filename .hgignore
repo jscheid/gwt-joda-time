@@ -1,0 +1,8 @@
+syntax:glob
+settings
+build
+dist
+lib
+nbproj
+*.svn-base
+.svn
