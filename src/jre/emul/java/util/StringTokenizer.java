@@ -58,8 +58,7 @@ public class StringTokenizer implements Enumeration<Object> {
    * @param delimiters the delimiters to use
    * @param returnDelimiters true to return each delimiter as a token
    */
-  public StringTokenizer(String string, String delimiters,
-      boolean returnDelimiters) {
+  public StringTokenizer(String string, String delimiters, boolean returnDelimiters) {
     if (string != null) {
       this.string = string;
       this.delimiters = delimiters;

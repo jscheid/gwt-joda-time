@@ -231,9 +231,7 @@ public final class Locale implements Cloneable, Serializable {
     }
     if (object instanceof Locale) {
       Locale o = (Locale) object;
-      return languageCode.equals(o.languageCode)
-          && countryCode.equals(o.countryCode)
-          && variantCode.equals(o.variantCode);
+      return languageCode.equals(o.languageCode) && countryCode.equals(o.countryCode) && variantCode.equals(o.variantCode);
     }
     return false;
   }
@@ -514,15 +512,14 @@ public final class Locale implements Cloneable, Serializable {
    * @see #equals
    */
   public synchronized int hashCode() {
-    return countryCode.hashCode() + languageCode.hashCode()
-        + variantCode.hashCode();
+    return countryCode.hashCode() + languageCode.hashCode() + variantCode.hashCode();
   }
 
   /**
    * Sets the default Locale to the specified Locale.
    * @param locale the new default Locale
-   * @exception SecurityException when there is a security manager which does not
-   *              allow this operation
+   * @exception SecurityException when there is a security manager which does
+   *              not allow this operation
    */
   public synchronized static void setDefault(Locale locale) {
     if (locale != null) {

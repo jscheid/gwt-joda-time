@@ -1,17 +1,12 @@
 /*
- *  Copyright 2001-2005 Stephen Colebourne
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Copyright 2001-2005 Stephen Colebourne Licensed under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
+ * or agreed to in writing, software distributed under the License is
+ * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
  */
 package org.goda.time.field;
 
@@ -26,80 +21,77 @@ import org.goda.time.DurationField;
  * <p>
  * This design allows new DateTimeField types to be defined that piggyback on
  * top of another, inheriting all the safe method implementations from
- * BaseDateTimeField. Should any method require pure delegation to the
- * wrapped field, simply override and use the provided getWrappedField method.
+ * BaseDateTimeField. Should any method require pure delegation to the wrapped
+ * field, simply override and use the provided getWrappedField method.
  * <p>
  * DecoratedDateTimeField is thread-safe and immutable, and its subclasses must
  * be as well.
- *
  * @author Brian S O'Neill
  * @since 1.0
  * @see DelegatedDateTimeField
  */
 public abstract class DecoratedDateTimeField extends BaseDateTimeField {
 
-    /** Serialization version */
-    private static final long serialVersionUID = 203115783733757597L;
+  /** Serialization version */
+  private static final long serialVersionUID = 203115783733757597L;
 
-    /** The DateTimeField being wrapped */
-    private final DateTimeField iField;
+  /** The DateTimeField being wrapped */
+  private final DateTimeField iField;
 
-    /**
-     * Constructor.
-     * 
-     * @param field  the field being decorated
-     * @param type  allow type to be overridden
-     */
-    protected DecoratedDateTimeField(DateTimeField field, DateTimeFieldType type) {
-        super(type);
-        if (field == null) {
-            throw new IllegalArgumentException("The field must not be null");
-        }
-        if (!field.isSupported()) {
-            throw new IllegalArgumentException("The field must be supported");
-        }
-        iField = field;
+  /**
+   * Constructor.
+   * @param field the field being decorated
+   * @param type allow type to be overridden
+   */
+  protected DecoratedDateTimeField(DateTimeField field, DateTimeFieldType type) {
+    super(type);
+    if (field == null) {
+      throw new IllegalArgumentException("The field must not be null");
     }
-
-    /**
-     * Gets the wrapped date time field.
-     * 
-     * @return the wrapped DateTimeField
-     */
-    public final DateTimeField getWrappedField() {
-        return iField;
+    if (!field.isSupported()) {
+      throw new IllegalArgumentException("The field must be supported");
     }
+    iField = field;
+  }
 
-    public boolean isLenient() {
-        return iField.isLenient();
-    }
+  /**
+   * Gets the wrapped date time field.
+   * @return the wrapped DateTimeField
+   */
+  public final DateTimeField getWrappedField() {
+    return iField;
+  }
 
-    public int get(long instant) {
-        return iField.get(instant);
-    }
+  public boolean isLenient() {
+    return iField.isLenient();
+  }
 
-    public long set(long instant, int value) {
-        return iField.set(instant, value);
-    }
+  public int get(long instant) {
+    return iField.get(instant);
+  }
 
-    public DurationField getDurationField() {
-        return iField.getDurationField();
-    }
+  public long set(long instant, int value) {
+    return iField.set(instant, value);
+  }
 
-    public DurationField getRangeDurationField() {
-        return iField.getRangeDurationField();
-    }
+  public DurationField getDurationField() {
+    return iField.getDurationField();
+  }
 
-    public int getMinimumValue() {
-        return iField.getMinimumValue();
-    }
+  public DurationField getRangeDurationField() {
+    return iField.getRangeDurationField();
+  }
 
-    public int getMaximumValue() {
-        return iField.getMaximumValue();
-    }
+  public int getMinimumValue() {
+    return iField.getMinimumValue();
+  }
 
-    public long roundFloor(long instant) {
-        return iField.roundFloor(instant);
-    }
+  public int getMaximumValue() {
+    return iField.getMaximumValue();
+  }
+
+  public long roundFloor(long instant) {
+    return iField.roundFloor(instant);
+  }
 
 }

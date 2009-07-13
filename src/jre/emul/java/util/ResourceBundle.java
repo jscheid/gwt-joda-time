@@ -14,7 +14,6 @@ package java.util;
  * governing permissions and limitations under the License.
  */
 
-
 /**
  * STUB: ResourceBundle is an abstract class which is the superclass of classes
  * which provide locale specific resources. A bundle contains a number of named
@@ -55,10 +54,10 @@ public abstract class ResourceBundle {
    * Finds the named resource bundle for the default locale.
    * @param bundleName the name of the resource bundle
    * @return ResourceBundle
-   * @exception MissingResourceException when the resource bundle cannot be found
+   * @exception MissingResourceException when the resource bundle cannot be
+   *              found
    */
-  public static final ResourceBundle getBundle(String bundleName)
-      throws MissingResourceException {
+  public static final ResourceBundle getBundle(String bundleName) throws MissingResourceException {
     return getBundleImpl(bundleName, Locale.getDefault());
   }
 
@@ -67,14 +66,14 @@ public abstract class ResourceBundle {
    * @param bundleName the name of the resource bundle
    * @param locale the locale
    * @return ResourceBundle
-   * @exception MissingResourceException when the resource bundle cannot be found
+   * @exception MissingResourceException when the resource bundle cannot be
+   *              found
    */
   public static final ResourceBundle getBundle(String bundleName, Locale locale) {
     return getBundleImpl(bundleName, locale);
   }
 
-  private static ResourceBundle getBundleImpl(String bundleName, Locale locale)
-      throws MissingResourceException {
+  private static ResourceBundle getBundleImpl(String bundleName, Locale locale) throws MissingResourceException {
     if (bundleName != null) {
       if (!locale.equals(Locale.getDefault())) {
         String localeName = locale.toString();

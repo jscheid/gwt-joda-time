@@ -65,14 +65,13 @@ class GJLocaleSymbols {
   private static String[] realignDaysOfWeek(String[] daysOfWeek) {
     String[] a = new String[8];
     for (int i = 1; i < 8; i++) {
-//      a[i] = daysOfWeek[i - 1];
-       a[i] = daysOfWeek[(i < 7) ? i + 1 : 1];
+      //      a[i] = daysOfWeek[i - 1];
+      a[i] = daysOfWeek[(i < 7) ? i + 1 : 1];
     }
     return a;
   }
 
-  private static void addSymbols(TreeMap<String, Integer> map,
-      String[] symbols, Integer[] integers) {
+  private static void addSymbols(TreeMap<String, Integer> map, String[] symbols, Integer[] integers) {
     for (int i = symbols.length; --i >= 0;) {
       String symbol = symbols[i];
       if (symbol != null) {
@@ -81,8 +80,7 @@ class GJLocaleSymbols {
     }
   }
 
-  private static void addNumerals(TreeMap<String, Integer> map, int start,
-      int end, Integer[] integers) {
+  private static void addNumerals(TreeMap<String, Integer> map, int start, int end, Integer[] integers) {
     for (int i = start; i <= end; i++) {
       map.put(String.valueOf(i).intern(), integers[i]);
     }
@@ -132,24 +130,18 @@ class GJLocaleSymbols {
 
     //TODO i18n this
     iEras = new String[] {"BCE", "CE"};
-    iDaysOfWeek = realignDaysOfWeek(new String[] {"",
-        calcon.sunday(), calcon.monday(), calcon.tuesday(), calcon.wednesday(),
-        calcon.thursday(), calcon.friday(), calcon.saturday()});
-    iShortDaysOfWeek = realignDaysOfWeek(new String[] {"",
-        calcon.sunday_short(), calcon.monday_short(), calcon.tuesday_short(),
-        calcon.wednesday_short(), calcon.thursday_short(),
+    iDaysOfWeek = realignDaysOfWeek(new String[] {
+        "", calcon.sunday(), calcon.monday(), calcon.tuesday(), calcon.wednesday(), calcon.thursday(), calcon.friday(), calcon.saturday()});
+    iShortDaysOfWeek = realignDaysOfWeek(new String[] {
+        "", calcon.sunday_short(), calcon.monday_short(), calcon.tuesday_short(), calcon.wednesday_short(), calcon.thursday_short(),
         calcon.friday_short(), calcon.saturday_short()});
     iMonths = realignMonths(new String[] {
-        calcon.january(), calcon.february(), calcon.march(), calcon.april(),
-        calcon.may(), calcon.june(), calcon.july(), calcon.august(),
-        calcon.september(), calcon.october(), calcon.november(),
-        calcon.december(),""});
+        calcon.january(), calcon.february(), calcon.march(), calcon.april(), calcon.may(), calcon.june(), calcon.july(), calcon.august(),
+        calcon.september(), calcon.october(), calcon.november(), calcon.december(), ""});
     iShortMonths = realignMonths(new String[] {
-        calcon.january_short(), calcon.february_short(), calcon.march_short(),
-        calcon.april_short(), calcon.may_short(), calcon.june_short(),
-        calcon.july_short(), calcon.august_short(), calcon.september_short(),
-        calcon.october_short(), calcon.november_short(),
-        calcon.december_short(),""});
+        calcon.january_short(), calcon.february_short(), calcon.march_short(), calcon.april_short(), calcon.may_short(),
+        calcon.june_short(), calcon.july_short(), calcon.august_short(), calcon.september_short(), calcon.october_short(),
+        calcon.november_short(), calcon.december_short(), ""});
     iHalfday = new String[] {"AM", "PM"};
 
     Integer[] integers = new Integer[13];
@@ -167,8 +159,7 @@ class GJLocaleSymbols {
       iParseEras.put("CE", integers[1]);
     }
 
-    iParseDaysOfWeek = new TreeMap<String, Integer>(
-        String.CASE_INSENSITIVE_ORDER);
+    iParseDaysOfWeek = new TreeMap<String, Integer>(String.CASE_INSENSITIVE_ORDER);
     addSymbols(iParseDaysOfWeek, iDaysOfWeek, integers);
     addSymbols(iParseDaysOfWeek, iShortDaysOfWeek, integers);
     addNumerals(iParseDaysOfWeek, 1, 7, integers);
