@@ -3,7 +3,6 @@
 	<classpathentry excluding="jre/emul/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/jre/emul"/>
 	<classpathentry kind="src" path="testdata"/>
-	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="lib/gwt-servlet.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
