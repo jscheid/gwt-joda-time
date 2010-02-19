@@ -10,7 +10,6 @@
  */
 package org.goda.time.tz;
 
-import java.text.DateFormatSymbols;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
