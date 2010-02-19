@@ -1504,7 +1504,7 @@ public class DateTimeFormatterBuilder {
   }
 
   //-----------------------------------------------------------------------
-  static class TextField implements DateTimeParser {
+  static class TextField implements DateTimeParser, DateTimePrinter {
 
     private static Map<Locale, Map<FieldType, Object[]>> cParseCache = new HashMap<Locale, Map<FieldType, Object[]>>();
     private final DateTimeFieldType iFieldType;
