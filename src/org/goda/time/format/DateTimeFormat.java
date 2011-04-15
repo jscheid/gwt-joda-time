@@ -796,13 +796,13 @@ public class DateTimeFormat {
       com.google.gwt.i18n.client.DateTimeFormat f = null;
       switch (iType) {
         case DATE:
-          f = com.google.gwt.i18n.client.DateTimeFormat.getMediumDateFormat();
+          f = com.google.gwt.i18n.client.DateTimeFormat.getFormat(com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat.DATE_MEDIUM);
           break;
         case TIME:
-          f = com.google.gwt.i18n.client.DateTimeFormat.getMediumTimeFormat();
+          f = com.google.gwt.i18n.client.DateTimeFormat.getFormat(com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat.TIME_MEDIUM);
           break;
         case DATETIME:
-          f = com.google.gwt.i18n.client.DateTimeFormat.getMediumDateTimeFormat();
+          f = com.google.gwt.i18n.client.DateTimeFormat.getFormat(com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat.DATE_TIME_MEDIUM);
           break;
       }
 
